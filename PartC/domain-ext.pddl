@@ -5,6 +5,7 @@
     ; Types
     ; -------------------------------
 
+    ; New types of astronaunt, room (parent type), controlRoom, dockingBay (children types)
     (:types
         rover
         lander
@@ -83,7 +84,7 @@
         )
     )
 
-    ; Moving Astronaunts
+    ; Moving Astronaunts between Room
     (:action move-astronaut-to-room
         :parameters (?a - astronaut ?la - lander ?r - room)
         ; Preconditions: astronaut belongs to the lander and is not already in the destination room
@@ -165,7 +166,7 @@
         )
     )
 
-    ; Transmit data to lander
+    ; NEW CONDITION: assigned astronaut must be in the control room and rover must hold unsent data
     (:action transmit-data
         :parameters (?r - rover ?a - astronaut ?c - controlRoom ?data - data ?la - lander)
         ; Preconditions: assigned astronaut must be in the control room and rover must hold unsent data
@@ -200,7 +201,7 @@
         )
     )
 
-    ; Drop sample at lander
+    ; NEW CONDITION: rover and astronaut are ready at the lander, storage has capacity, and rover carries the sample
     (:action drop-sample
         :parameters (?r - rover ?a - astronaut ?d - dockingBay ?s - sample ?la - lander ?l - location)
         ; Preconditions: rover and astronaut are ready at the lander, storage has capacity, and rover carries the sample
@@ -221,3 +222,4 @@
         )
     )
 )
+
