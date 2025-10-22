@@ -60,7 +60,7 @@
     ; Actions
     ; -------------------------------
 
-    ; Placement of landers - one-time placement, can't be changed
+    ; Action for optimising placement of lander 
     (:action place-lander
         :parameters (?la - lander ?l - location)
         ; Preconditions: the lander has not been placed and the location is designated as valid
@@ -85,7 +85,7 @@
             (rover-belongs-to ?r ?la)
             (not (rover-deployed ?r))
         )
-        ; Effects: flag the rover as deployed and co-locate it with the lander
+        ; Effects: flag the rover as deployed and co-relate it with the lander
         :effect (and
             (rover-deployed ?r)
             (rover-at ?r ?l)
@@ -142,7 +142,7 @@
         )
     )
 
-    ; Transmit data to lander
+    ; Transmiting data (image/scan) to lander
     (:action transmit-data
         :parameters (?r - rover ?data - data ?la - lander)
         ; Preconditions: rover memory is full and either an image or scan is flagged for transmission
@@ -194,3 +194,4 @@
         )
     )
 )
+
